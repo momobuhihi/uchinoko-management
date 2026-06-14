@@ -35,4 +35,12 @@ public interface OriginalCharacterRepository {
    * @return　うちのこ詳細情報
    */
   OriginalCharacter findById(Integer id);
+
+  /**
+   * うちのこ物理削除
+   *
+   * @param id うちのこID
+   *
+   */
+  void delete(Integer id);
 }

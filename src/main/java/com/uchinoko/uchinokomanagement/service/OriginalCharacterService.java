@@ -38,6 +38,7 @@ public class OriginalCharacterService {
    * @param originalCharacter うちのこ詳細情報
    */
   public void update(OriginalCharacter originalCharacter) {
+    findById(originalCharacter.getId());
     repository.update(originalCharacter);
   }
 
@@ -48,6 +49,23 @@ public class OriginalCharacterService {
    * @return　うちのこ詳細情報
    */
   public OriginalCharacter findById(Integer id) {
-    return repository.findById(id);
+    OriginalCharacter character = repository.findById(id);
+
+    if (character == null) {
+      throw new IllegalArgumentException(
+          "ID:" + id + " のキャラクターは存在しません");
+    }
+
+    return character;
+  }
+
+  /**
+   * うちのこ物理削除
+   *
+   * @param id うちのこID
+   */
+  public void delete(Integer id) {
+    findById(id);
+    repository.delete(id);
   }
 }

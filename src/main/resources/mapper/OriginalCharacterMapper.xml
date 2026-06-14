@@ -67,4 +67,9 @@
     resultType="com.uchinoko.uchinokomanagement.data.OriginalCharacter">
     SELECT * FROM characters WHERE id = #{id}
   </select>
+
+  <!-- うちのこ物理削除 -->
+  <delete id="delete">
+    DELETE FROM characters WHERE id = #{id}
+  </delete>
 </mapper>
