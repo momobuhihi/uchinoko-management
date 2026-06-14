@@ -20,4 +20,19 @@ public interface OriginalCharacterRepository {
    * @param originalCharacter
    */
   void insert(OriginalCharacter originalCharacter);
+
+  /**
+   * うちのこ詳細更新
+   *
+   * @param originalCharacter
+   */
+  void update(OriginalCharacter originalCharacter);
+
+  /**
+   * うちのこ詳細ID検索
+   *
+   * @param id うちのこID
+   * @return　うちのこ詳細情報
+   */
+  OriginalCharacter findById(Integer id);
 }

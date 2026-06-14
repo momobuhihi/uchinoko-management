@@ -4,27 +4,14 @@
 
 <mapper namespace="com.uchinoko.uchinokomanagement.repository.OriginalCharacterRepository">
 
+  <!-- うちのこ詳細一覧検索 -->
   <select id="search"
     resultType="com.uchinoko.uchinokomanagement.data.OriginalCharacter">
-    SELECT
-    id,
-    name,
-    ruby,
-    real_age,
-    look_age,
-    gender,
-    race,
-    world_name,
-    appearance,
-    personality,
-    ability,
-    description,
-    created_at,
-    updated_at
-    FROM characters
+    SELECT * FROM characters
     ORDER BY id
   </select>
 
+  <!-- うちのこ新規登録 -->
   <insert id="insert"
     parameterType="com.uchinoko.uchinokomanagement.data.OriginalCharacter">
     INSERT INTO characters (
@@ -53,4 +40,31 @@
     #{description}
     )
   </insert>
+
+  <!-- うちのこ詳細更新 -->
+  <update id="update"
+    parameterType="com.uchinoko.uchinokomanagement.data.OriginalCharacter">
+    UPDATE characters
+    SET
+    name = #{name},
+    ruby = #{ruby},
+    real_age = #{realAge},
+    look_age = #{lookAge},
+    gender = #{gender},
+    race = #{race},
+    world_name = #{worldName},
+    appearance = #{appearance},
+    personality = #{personality},
+    ability = #{ability},
+    description = #{description},
+    updated_at = CURRENT_TIMESTAMP
+    WHERE id = #{id}
+  </update>
+
+  <!-- うちのこ詳細ID検索 -->
+  <select id="findById"
+    parameterType="java.lang.Integer"
+    resultType="com.uchinoko.uchinokomanagement.data.OriginalCharacter">
+    SELECT * FROM characters WHERE id = #{id}
+  </select>
 </mapper>
