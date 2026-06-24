@@ -72,4 +72,27 @@
   <delete id="delete">
     DELETE FROM characters WHERE id = #{id}
   </delete>
+
+  <!-- うちのこ名前検索 -->
+  <select id="searchByName"
+    resultType="com.uchinoko.uchinokomanagement.data.OriginalCharacter">
+    SELECT
+    id,
+    name,
+    ruby,
+    real_age,
+    look_age,
+    gender,
+    race,
+    world_name,
+    appearance,
+    personality,
+    ability,
+    description,
+    created_at,
+    updated_at
+    FROM characters
+    WHERE name LIKE CONCAT('%', #{name}, '%')
+    ORDER BY id
+  </select>
 </mapper>

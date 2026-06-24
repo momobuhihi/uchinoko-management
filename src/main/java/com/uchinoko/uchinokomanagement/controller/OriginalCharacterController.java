@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,11 +22,22 @@ public class OriginalCharacterController {
     this.service = service;
   }
 
+  /**
+   * うちのこ全件（名前）検索
+   *
+   * @return　うちのこ詳細一覧,名前検索
+   */
   @GetMapping("/characters")
-  public List<OriginalCharacter> getCharacters() {
-    return service.search();
+  public List<OriginalCharacter> searchCharacters(
+      @RequestParam(required = false) String name) {
+    return service.search(name);
   }
 
+  /**
+   * うちのこ新規登録
+   *
+   * @param originalCharacter
+   */
   @PostMapping("/characters")
   public void registerCharacter(@RequestBody @Valid OriginalCharacter originalCharacter) {
     service.register(originalCharacter);

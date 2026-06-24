@@ -43,4 +43,6 @@ public interface OriginalCharacterRepository {
    *
    */
   void delete(Integer id);
+
+  List<OriginalCharacter> searchByName(String name);
 }

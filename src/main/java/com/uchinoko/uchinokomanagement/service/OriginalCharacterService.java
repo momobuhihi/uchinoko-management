@@ -15,12 +15,19 @@ public class OriginalCharacterService {
   }
 
   /**
-   * うちのこ詳細一覧検索
+   * うちのこ詳細一覧検索。名前を入れれば名前検索、名前を入れなければ全件検索。
    *
    * @return
    */
   public List<OriginalCharacter> search() {
     return repository.search();
+  }
+
+  public List<OriginalCharacter> search(String name) {
+    if (name == null || name.isBlank()) {
+      return search();
+    }
+    return repository.searchByName(name);
   }
 
   /**
